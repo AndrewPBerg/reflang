@@ -61,12 +61,12 @@ public interface Heap {
 
 		public Heap16Bit(){}
 
-		// Method to print heap entries at index locations 1 to 5 using the Printer class
+		// Method to print heap entries at index locations 0 to 4 using the Printer class
 		public void showHeap() {
 			Printer p = new Printer();
-			for (int i = 1; i <= 5; i++) {
+			for (int i = 0; i < 5; i++) {
 				if (i < _rep.length) {
-					System.out.print("Index " + i + ": ");
+					System.out.print("loc: " + i + ": ");
 					if (_rep[i] != null) {
 						p.print(_rep[i]);
 					} else {
