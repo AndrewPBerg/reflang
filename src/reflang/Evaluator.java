@@ -372,4 +372,10 @@ public class Evaluator implements Visitor<Value> {
 	public Evaluator(Reader reader) {
 		_reader = reader;
 	}
+	
+	public void showHeap() {
+		if(heap instanceof Heap16Bit) {
+			((Heap16Bit) heap).showHeap();
+		}
+	}
 }
