@@ -67,6 +67,7 @@ public interface Heap {
 			for (int i = 0; i < 5; i++) {
 				if (i < _rep.length) {
 					System.out.print("loc: " + i + ": ");
+					# TODO print the str to the reference (hexadecimal)
 					if (_rep[i] != null) {
 						p.print(_rep[i]);
 					} else {
