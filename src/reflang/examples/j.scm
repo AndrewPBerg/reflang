@@ -1,0 +1,1 @@
+((deref (deref sumfunptr)) 7 8)

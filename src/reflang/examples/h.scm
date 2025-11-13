@@ -1,0 +1,1 @@
+((deref sumfun) (deref a) (deref b))

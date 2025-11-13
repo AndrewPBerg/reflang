@@ -1,0 +1,1 @@
+(define sumfun (ref (lambda (x y) (+ x y))))

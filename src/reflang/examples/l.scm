@@ -1,0 +1,1 @@
+((deref sumfunalias) 5 6)
