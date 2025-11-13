@@ -1,0 +1,8 @@
+(define lst1 (list (ref 10) (ref 3) (ref -67)))
+; output: loc: 0: 10, loc: 1: 3, loc: 2: -67
+
+(define sum1 (letrec ((sum1 (lambda (lst) (if (null? lst) 0 (+ (deref (car lst)) (sum1 (cdr lst))))))) sum1))
+
+(sum1 lst1)
+; Output: -54
+

@@ -1,0 +1,22 @@
+(define lst3 (list (list (ref 3) (ref 4)) (list (ref 10) (ref 9) (ref 11)) (list (ref 2))))
+
+(define sum3 (lambda (lst) (if (null? lst) 0 (+ (letrec ((suminner (lambda (inner) (if (null? inner) 0 (+ (deref (car inner)) (suminner (cdr inner))))))) (suminner (car lst))) (sum3 (cdr lst))))))
+
+; expanded version
+(define sum3
+  (lambda (lst)
+    (if (null? lst)
+        0
+        (+ (letrec ((suminner
+                      (lambda (inner)
+                        (if (null? inner)
+                            0
+                            (+ (deref (car inner))
+                               (suminner (cdr inner)))))))
+             (suminner (car lst)))
+           (sum3 (cdr lst))))))
+
+
+(sum3 lst3)
+; Output: 39
+

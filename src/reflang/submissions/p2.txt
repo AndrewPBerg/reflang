@@ -1,0 +1,12 @@
+; Creating a reference to a list of references to numbers
+(define lst2 (ref (list (ref 10) (ref 20) (ref 30))))
+; output: loc: 0: 10, loc: 1: 20, loc: 2: 30, loc: 3: (loc:0 loc:1 loc:2)
+
+
+(define sum2 (lambda (lst) (if (null? (deref lst)) 0 (+ (deref (car (deref lst))) (sum2 (ref (cdr (deref lst))))))))
+; This should return 60 (10 + 20 + 30)
+
+
+(sum2 lst2)
+; Output: 60 
+
