@@ -1,0 +1,13 @@
+; we have here a list of functions. in the order they do the following:
+; 1. multiplication function
+; 2. incremental function (++1)
+; 3. a function that simply returns 0
+(define lst4 (list (ref (lambda (y) (* y y))) (ref (lambda (g) (+ g 1))) (ref (lambda (q) 0))))
+
+
+; apply each accepts a list of references to functions, and applies each in order
+(define applyeach (lambda (lst n) (if (null? lst) (list) (cons ((deref (car lst)) n) (applyeach (cdr lst) n)))))
+
+
+(applyeach lst4 5)
+; output: (25 6 0)

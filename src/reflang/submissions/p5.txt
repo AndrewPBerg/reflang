@@ -1,0 +1,16 @@
+; setup references
+(define opref (ref (lambda (x) (* x x))))
+(define lst1 (list (ref 10) (ref 3) (ref -4)))
+
+; define map operator recursively
+(define mapopref (lambda (opref lst) (if (null? lst) (list) (cons (ref ((deref opref) (deref (car lst)))) (mapopref opref (cdr lst))))))
+
+(define answers (mapopref opref lst1))
+
+; outputs
+(deref (car answers))
+;  100
+(deref (car (cdr answers)))
+;  9
+(deref (car (cdr (cdr answers))))
+; 16
