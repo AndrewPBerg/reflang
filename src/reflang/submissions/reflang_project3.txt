@@ -1,0 +1,10 @@
+(define sum1 (letrec ((sum1 (lambda (lst) (if (null? lst) 0 (+ (deref (car lst)) (sum1 (cdr lst))))))) sum1))
+
+(define sum2 (lambda (lst) (if (null? (deref lst)) 0 (+ (deref (car (deref lst))) (sum2 (ref (cdr (deref lst))))))))
+
+(define sum3 (lambda (lst) (if (null? lst) 0 (+ (letrec ((suminner (lambda (inner) (if (null? inner) 0 (+ (deref (car inner)) (suminner (cdr inner))))))) (suminner (car lst))) (sum3 (cdr lst))))))
+
+(define applyeach (lambda (lst n) (if (null? lst) (list) (cons ((deref (car lst)) n) (applyeach (cdr lst) n)))))
+
+(define mapopref (lambda (opref lst) (if (null? lst) (list) (cons (ref ((deref opref) (deref (car lst)))) (mapopref opref (cdr lst))))))
+
